@@ -1,0 +1,15 @@
+server:
+  port: 8095
+spring:
+  datasource:
+    driver-classname: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1521:ORCL
+    username: c##Singers
+    password: c##Singers
+  jpa:
+    show-sql: true
+    hibernate:
+      dbl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.Oracle21cDialect
