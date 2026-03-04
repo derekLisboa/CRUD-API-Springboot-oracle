@@ -1,15 +1,18 @@
 package java.com.derek.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.com.derek.entity.Singers;
 import java.com.derek.repository.SingersRepository;
+import java.util.List;
 
 public class SingersServiceImpl implements SingersService{
 
-    @Autowired
-    private SingersRepository singersRepository;
+    private final SingersRepository singersRepository;
+
+    public SingersServiceImpl(SingersRepository singersRepository) {
+        this.singersRepository = singersRepository;
+    }
 
     @Override
     @Transactional
@@ -37,7 +40,15 @@ public class SingersServiceImpl implements SingersService{
 
     @Override
     @Transactional
+
+    public List<Singers> getAllSingers(){
+        return singersRepository.findAll();
+    }
+
+    @Override
+    @Transactional
     public boolean isAvailable(Integer id) {
+
         return singersRepository.existsById(id);
     }
 }
